@@ -70,7 +70,7 @@ for pair in p2:
 smallp2 = {True: 1, False: 9999}
 for pair in arep2:
     if pair[False] < smallp2[False]:
-        smallp2 = {True: pair[True], False: pair[False]}
+        smallp2 = {True: pair[True], False: pair[False], "sqrt": int(pair[True]**(1/2))}
 print(smallp2)
 print(notp2)
 print(arep2)
