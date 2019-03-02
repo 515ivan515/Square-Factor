@@ -1,4 +1,9 @@
-p1 = int(input("<+>"))
+p1 = input("<+>")
+try:
+    p1 = int(p1)
+except ValueError:
+    print("ERROR: invalid input")
+    raise SystemExit
 
 
 def f(value):
@@ -55,23 +60,20 @@ def ps(n):
         A.add(x)
     return True
 
-notp2 = []
+
 arep2 = []
 print(p2)
 for pair in p2:
-    if ps(pair[0]) is False and ps(pair[1]) is False:
-        notp2.append([pair, [ps(pair[0]), ps(pair[1])]])
-    elif ps(pair[0]) is True or ps(pair[1]) is True:
+    if ps(pair[0]) is True or ps(pair[1]) is True:
         arep2.append({
             ps(pair[0]): pair[0],
             ps(pair[1]): pair[1]
         })
-    print(f"{pair} ({ps(pair[0])}, {ps(pair[1])})")
+    print(str(pair) + "(" + str(ps(pair[0])) + ", " + str(ps(pair[1])) + ")")
 smallp2 = {True: 1, False: 9999}
 for pair in arep2:
     if pair[False] < smallp2[False]:
         smallp2 = {True: pair[True], False: pair[False], "sqrt": int(pair[True]**(1/2))}
+if smallp2 == {True: 1, False: 9999}:
+    smallp2 = "There are no perfect square factors."
 print(smallp2)
-print(notp2)
-print(arep2)
-input("press enter to close")
